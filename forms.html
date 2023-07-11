@@ -12,21 +12,21 @@
         <h5 class="text-align: center;">Book a call slot and our representative will call you within 1hr of selected time.</h5>
         <hr width="100%" size="4px"> 
 
-        <form action="#" onsubmit="onsignup()">
+        <form action="#" onsubmit="saveToLocalStorage(event)">
             
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name"/> <br> <br>
+                <input type="text" class="form-control" id="name" required/> <br> <br>
             </div>
             
             <div class="form-group">
                 <label for="mail">Email:</label>
-                <input type="text" class="form-control" id="mail"  /> <br> <br>
+                <input type="text" class="form-control" id="mail" required /> <br> <br>
             </div>
             
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" class="form-control" id="phone" /> <br> <br>
+                <input type="text" class="form-control" id="phone" required/> <br> <br>
             </div>
             
             <div class="form-group">
@@ -39,13 +39,14 @@
         </form>
 
         <script>
-            function onsignup(){
+            function saveToLocalStorage(event){
+                event.preventDefault();
                 const name = document.getElementById('name').value;
-                console.log(name);
+                localStorage.setItem('name', name);
                 const mail = document.getElementById('mail').value;
-                console.log(mail);
+                localStorage.setItem('mail', mail);
                 const phone = document.getElementById('phone').value;
-                console.log(phone);
+                localStorage.setItem('phone',phone);
                 const date = document.getElementById('date').value;
                 console.log(date);
                 const time = document.getElementById('time').value;
