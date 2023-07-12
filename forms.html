@@ -37,22 +37,29 @@
             <button type="submit" class="btn btn-primary">"Get a call"</button>
 
         </form>
-
+        <ul id = 'listOfitems'> </ul>
         <script>
             function saveToLocalStorage(event){
                 event.preventDefault();
-                const name = document.getElementById('name').value;
-                localStorage.setItem('name', name);
-                const mail = document.getElementById('mail').value;
-                localStorage.setItem('mail', mail);
-                const phone = document.getElementById('phone').value;
-                localStorage.setItem('phone',phone);
+                const name = event.target.name.value;
+                //localStorage.setItem('name', name);
+                const mail = event.target.mail.value;
+                //localStorage.setItem('mail', mail);
+                const phone = event.target.phone.value;
+                //localStorage.setItem('phone',phone);
                 const obj={
                     name,
                     mail,
                     phone
                 }
-                localStorage.setItem('userDetails', JSON.stringify(obj))
+                localStorage.setItem(obj.email, JSON.stringify(obj))
+                showUserOnScreen(obj)
+
+                function showUserOnScreen(obj){
+                    const parentELem = document.getElementById('listOfitems')
+                    
+                   parentELem.innerHTML = `<li> ${obj.name} - ${obj.mail} = ${obj.phone} </li>`
+                }
                 const date = document.getElementById('date').value;
                 console.log(date);
                 const time = document.getElementById('time').value;
